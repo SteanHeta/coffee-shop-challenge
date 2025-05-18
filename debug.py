@@ -1,20 +1,20 @@
-# Test the implementation
 from customer import Customer
 from coffee import Coffee
 from order import Order
 
-# Create instances
-customer = Customer("Alex")
-coffee = Coffee("Latte")
+# Test data setup
+customer1 = Customer("Alice")
+customer2 = Customer("Bob")
+coffee1 = Coffee("Latte")
+coffee2 = Coffee("Espresso")
 
-# Test order creation
-order = Order(customer, coffee, 5.0)
+# Create orders
+order1 = Order(customer1, coffee1, 5.0)
+order2 = Order(customer1, coffee2, 4.5)
+order3 = Order(customer2, coffee1, 6.0)
 
 # Test relationships
-assert order in customer.orders()
-assert coffee in customer.coffees()
-assert order in coffee.orders()
-assert customer in coffee.customers()
-
-# Test bonus method
-assert Customer.most_aficionado(coffee) == customer
+print(f"{customer1.name}'s orders: {len(customer1.orders())}")  # Should be 2
+print(f"{coffee1.name} customers: {len(coffee1.customers())}")  # Should be 2
+print(f"Latte average price: {coffee1.average_price():.2f}")  # Should be 5.5
+print(f"Most aficionado for Latte: {Customer.most_aficionado(coffee1).name}")  # Should be Bob

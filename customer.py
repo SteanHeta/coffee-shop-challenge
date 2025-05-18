@@ -30,7 +30,7 @@ class Customer():
         return new_order
     
     @classmethod
-    def most_ordered(cls, coffee):
+    def most_aficionado(cls, coffee):
         if not coffee.orders():
             return None
         
@@ -42,7 +42,7 @@ class Customer():
                 customers[order.customer] = order.price
 
         return max(customers.items(), key=lambda x: x[1])[0]
-    pass
+
 
     
 
