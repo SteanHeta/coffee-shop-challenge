@@ -34,8 +34,8 @@ class TestCoffee:
         assert coffee.num_orders() == 0
         assert coffee.average_price() == 0
 
-        Order(customer.coffee, 5.0)
-        Order(customer.coffee, 4.5)
+        Order(customer, coffee, 5.0)
+        Order(customer, coffee, 8.0)
 
         assert coffee.num_orders() == 2
-        assert coffee.average_price() == 5.0
+        assert coffee.average_price() == 6.5
