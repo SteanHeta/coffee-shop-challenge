@@ -1,7 +1,6 @@
 class Coffee:
     def __init__(self, name):
-        self.name = name  # This will use the property setter
-
+        self.name = name 
     @property
     def name(self):
         return self._name
@@ -17,20 +16,16 @@ class Coffee:
         self._name = value
 
     def orders(self):
-        """Returns all orders for this coffee"""
-        from order import Order  # Local import to avoid circular dependency
+        from order import Order 
         return [order for order in Order.all if order.coffee == self]
     
     def customers(self):
-        """Returns unique customers who ordered this coffee"""
         return list({order.customer for order in self.orders()})
     
     def num_orders(self):
-        """Returns count of orders for this coffee"""
         return len(self.orders())
     
     def average_price(self):
-        """Calculates average price of orders for this coffee"""
         orders = self.orders()
         if not orders:
             return 0
