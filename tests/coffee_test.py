@@ -23,4 +23,19 @@ class TestCoffee:
         Order(customer1, coffee, 5.0)
         Order(customer2, coffee, 8.0)
 
-        assert len(coffee.orders0) == 2
+        assert len(coffee.orders()) == 2
+        assert len(coffee.customers()) == 2
+        assert customer1 in coffee.customers()
+
+    def test_aggregate_methods(self):
+        coffee = Coffee("Frappe")
+        customer = Customer("John")
+
+        assert coffee.num_orders() == 0
+        assert coffee.average_price() == 0
+
+        Order(customer.coffee, 5.0)
+        Order(customer.coffee, 4.5)
+
+        assert coffee.num_orders() == 2
+        assert coffee.average_price() == 5.0
